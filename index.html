@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Batalha de CAPTCHA</title>
+</head>
+<body>
+  <h1>Batalha de CAPTCHA</h1>
+  
+  <p>O CAPTCHA será exibido simultaneamente para os dois jogadores.</p>
+
+  <!-- Exibir o CAPTCHA para ambos -->
+  <img id="captcha" src="" alt="Captcha" />
+
+  <br><br>
+
+  <!-- Botão para carregar o CAPTCHA -->
+  <button onclick="carregarCaptcha()">Entrar na Batalha</button>
+
+  <script>
+    async function carregarCaptcha() {
+      // Carrega a imagem do CAPTCHA do servidor
+      const response = await fetch('https://seu-usuario.repl.co/generate-captcha'); // Altere com o seu URL do Replit
+      const imageBlob = await response.blob();
+      const imageUrl = URL.createObjectURL(imageBlob);
+
+      // Exibe o mesmo CAPTCHA para ambos os jogadores
+      document.getElementById('captcha').src = imageUrl;
+    }
+  </script>
+</body>
+</html>
